@@ -1,0 +1,291 @@
+/* ---------------------------------------------------------------------- */
+/* Reset & variáveis                                                      */
+/* ---------------------------------------------------------------------- */
+:root {
+  --vinho: #6d1b2b;
+  --vinho-escuro: #4a1220;
+  --vinho-claro: #8f3245;
+  --branco: #ffffff;
+  --off-white: #f7f4f4;
+  --cinza-texto: #2b1f21;
+  --cinza-medio: #6b5d5f;
+  --borda: #e4dcdd;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  color: var(--cinza-texto);
+  background: var(--branco);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Header / Navegação                                                    */
+/* ---------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-bar {
+  background: var(--vinho);
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.nav-menu a {
+  display: block;
+  padding: 16px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--branco);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.nav-menu a:hover {
+  background: var(--vinho-escuro);
+}
+
+.nav-menu a.active {
+  background: var(--branco);
+  color: var(--vinho);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Hero / seções gerais                                                   */
+/* ---------------------------------------------------------------------- */
+.page-hero {
+  background: var(--vinho);
+  color: var(--branco);
+  padding: 64px 0 48px;
+}
+
+.page-hero .container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.page-hero h1 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.page-hero p.lead {
+  max-width: 640px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+}
+
+main {
+  padding: 56px 0 80px;
+}
+
+section + section {
+  margin-top: 48px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--vinho);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--vinho);
+  display: inline-block;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Cards quadrados                                                        */
+/* ---------------------------------------------------------------------- */
+.card {
+  background: var(--off-white);
+  border: 1px solid var(--borda);
+  border-left: 4px solid var(--vinho);
+  padding: 24px;
+}
+
+.card + .card {
+  margin-top: 16px;
+}
+
+.card-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--vinho-escuro);
+}
+
+.card-meta {
+  font-size: 13px;
+  color: var(--cinza-medio);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 4px 0 10px;
+}
+
+.card-desc {
+  font-size: 15px;
+  color: var(--cinza-texto);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Sobre mim - foto                                                       */
+/* ---------------------------------------------------------------------- */
+.about-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.photo-frame {
+  width: 220px;
+  height: 220px;
+  background: var(--off-white);
+  border: 3px solid var(--vinho);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--vinho);
+  font-size: 13px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Skills / tags                                                          */
+/* ---------------------------------------------------------------------- */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.tag {
+  background: var(--vinho);
+  color: var(--branco);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  letter-spacing: 0.03em;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Contato                                                                 */
+/* ---------------------------------------------------------------------- */
+.contact-block {
+  max-width: 560px;
+}
+
+.contact-info-list {
+  list-style: none;
+}
+
+.contact-info-list li {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--borda);
+}
+
+.contact-info-list .label {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--vinho);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Footer                                                                  */
+/* ---------------------------------------------------------------------- */
+.site-footer {
+  background: var(--vinho-escuro);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 28px 0;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Responsivo                                                             */
+/* ---------------------------------------------------------------------- */
+@media (max-width: 720px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-frame {
+    width: 160px;
+    height: 160px;
+  }
+
+  .page-hero h1 {
+    font-size: 30px;
+  }
+}
