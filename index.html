@@ -4,49 +4,88 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cauê Gontijo — Portfólio</title>
+  <meta name="description" content="Portfólio de Cauê Gontijo, estudante de Análise e Desenvolvimento de Sistemas em Goiânia/GO.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="sobre">
 
   <header class="site-header">
-    <nav class="nav-bar">
-      <ul class="nav-menu">
-        <li><a href="index.html" data-page="sobre">Sobre Mim</a></li>
-        <li><a href="formacao.html" data-page="formacao">Formação e Cursos</a></li>
-        <li><a href="experiencia.html" data-page="experiencia">Experiência Profissional</a></li>
-        <li><a href="objetivo.html" data-page="objetivo">Objetivo Profissional</a></li>
-        <li><a href="contato.html" data-page="contato">Contato</a></li>
-      </ul>
-    </nav>
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">CG</span>
+        <span class="brand-name" data-nome>Cauê Gontijo</span>
+      </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+      <nav class="nav-bar" aria-label="Principal">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html" data-page="sobre">Sobre</a></li>
+          <li><a href="formacao.html" data-page="formacao">Formação</a></li>
+          <li><a href="experiencia.html" data-page="experiencia">Experiência</a></li>
+          <li><a href="projetos.html" data-page="projetos">Projetos</a></li>
+          <li><a href="objetivo.html" data-page="objetivo">Objetivo</a></li>
+          <li><a href="contato.html" data-page="contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <section class="page-hero">
+  <section class="page-hero hero-home">
     <div class="container">
-      <span class="eyebrow">Portfólio</span>
-      <h1 data-nome>Cauê Gontijo</h1>
-      <p class="lead" id="hero-cargo"></p>
+      <div>
+        <span class="eyebrow">Portfólio</span>
+        <h1 data-nome>Cauê Gontijo</h1>
+        <p class="lead" id="hero-cargo"></p>
+        <div class="hero-meta">
+          <span>Base <strong id="hero-local">Goiânia/GO</strong></span>
+          <span>Status <strong>Aberto a oportunidades</strong></span>
+        </div>
+        <div class="hero-actions">
+          <a href="projetos.html" class="btn btn-solid">Ver projetos <span class="arrow">&rarr;</span></a>
+          <a href="contato.html" class="btn btn-ghost">Fale comigo</a>
+        </div>
+      </div>
+      <div class="photo-frame" id="foto-frame">Sua foto aqui</div>
     </div>
   </section>
 
   <main>
     <div class="container">
       <section>
-        <div class="about-layout">
-          <div class="photo-frame" id="foto-frame">Sua foto aqui</div>
-          <div>
-            <h2 class="section-title">Sobre Mim</h2>
-            <p class="card-desc" id="sobre-texto"></p>
-          </div>
+        <div class="section-head">
+          <span class="section-num">01</span>
+          <h2 class="section-title">Sobre mim</h2>
         </div>
+        <p class="prose-lg" id="sobre-texto"></p>
+      </section>
+
+      <section class="home-intro">
+        <div class="fact" id="resumo-atual"></div>
+        <div class="fact" id="resumo-formacao"></div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <span class="section-num">02–06</span>
+          <h2 class="section-title">Continue por aqui</h2>
+        </div>
+        <ul class="page-index">
+          <li><a href="formacao.html"><span class="idx">02</span><span class="name">Formação e Cursos</span><span class="hint">Trajetória acadêmica</span></a></li>
+          <li><a href="experiencia.html"><span class="idx">03</span><span class="name">Experiência Profissional</span><span class="hint">Onde já trabalhei</span></a></li>
+          <li><a href="projetos.html"><span class="idx">04</span><span class="name">Projetos</span><span class="hint">Fotos e detalhes</span></a></li>
+          <li><a href="objetivo.html"><span class="idx">05</span><span class="name">Objetivo Profissional</span><span class="hint">Habilidades e foco</span></a></li>
+          <li><a href="contato.html"><span class="idx">06</span><span class="name">Contato</span><span class="hint">E-mail, LinkedIn, GitHub</span></a></li>
+        </ul>
       </section>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      &copy; <span id="year"></span> <span data-nome>Cauê Gontijo</span>. Todos os direitos reservados.
+      <span>&copy; <span id="year"></span> <span data-nome>Cauê Gontijo</span> &middot; Goiânia/GO</span>
+      <ul class="footer-links" id="footer-links"></ul>
     </div>
   </footer>
 

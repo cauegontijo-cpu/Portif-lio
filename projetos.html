@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projetos — Cauê Gontijo</title>
+  <meta name="description" content="Portfólio de Cauê Gontijo, estudante de Análise e Desenvolvimento de Sistemas em Goiânia/GO.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="projetos">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">CG</span>
+        <span class="brand-name" data-nome>Cauê Gontijo</span>
+      </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+      <nav class="nav-bar" aria-label="Principal">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html" data-page="sobre">Sobre</a></li>
+          <li><a href="formacao.html" data-page="formacao">Formação</a></li>
+          <li><a href="experiencia.html" data-page="experiencia">Experiência</a></li>
+          <li><a href="projetos.html" data-page="projetos">Projetos</a></li>
+          <li><a href="objetivo.html" data-page="objetivo">Objetivo</a></li>
+          <li><a href="contato.html" data-page="contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">04 &mdash; Projetos</span>
+      <h1>Projetos</h1>
+      <p class="lead">Alguns trabalhos que desenvolvi. Clique em um projeto para vê-lo.</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="container">
+      <section>
+        <div class="section-head">
+          <span class="section-num">a.</span>
+          <h2 class="section-title">Trabalhos selecionados</h2>
+          <span class="section-note" id="projetos-total"></span>
+        </div>
+        <div class="projects-grid" id="lista-projetos"></div>
+      </section>
+    </div>
+  </main>
+
+  <div class="book" id="book" role="dialog" aria-modal="true" aria-labelledby="book-title" hidden>
+    <aside class="book-side">
+      <span class="book-cat" id="book-cat"></span>
+      <h2 class="book-title" id="book-title"></h2>
+      <p class="book-desc" id="book-desc"></p>
+      <div class="book-count"><strong id="book-atual">01</strong> / <span id="book-total">01</span></div>
+    </aside>
+    <div class="book-main">
+      <button type="button" class="book-close">Fechar &times;</button>
+      <div class="book-stage">
+        <button type="button" class="book-nav prev" aria-label="Foto anterior">&larr;</button>
+        <figure class="book-figure">
+          <div class="book-frame" id="book-frame"></div>
+          <figcaption class="book-caption" id="book-caption"></figcaption>
+        </figure>
+        <button type="button" class="book-nav next" aria-label="Próxima foto">&rarr;</button>
+      </div>
+      <div class="book-thumbs" id="book-thumbs"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>&copy; <span id="year"></span> <span data-nome>Cauê Gontijo</span> &middot; Goiânia/GO</span>
+      <ul class="footer-links" id="footer-links"></ul>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

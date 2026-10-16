@@ -9,9 +9,9 @@ const SITE_DATA = {
     cargo: "Estudante de Análise e Desenvolvimento de Sistemas (ADS) ",
     foto: "img/foto-perfil.jpg",
     sobre:
-      "Olá, me chamo Cauê, tenho 20 anos e sou estudante do quarto período de Análise " +
-      "e Desenvolvimento de Sistemas (ADS) na PUC-GO. Sou apaixonado pela área de TI e " +
-      "busco uma oportunidade de emprego na área para crescer pessoalmente e profissionalmente.",
+      "Olá, me chamo Cauê, tenho 20 anos e estou no 4º período de Análise e Desenvolvimento " +
+      "de Sistemas na PUC Goiás. Atuo como desenvolvedor Full Stack com foco em automação, " +
+      "criando dashboards e sistemas internos que facilitam a rotina de quem trabalha comigo.",
   },
 
   formacoes: [
@@ -49,7 +49,7 @@ const SITE_DATA = {
       cargo: "Estagiário de TI",
       empresa: "Ingoh — Instituto Goiano de Oncologia e Hematologia (Goiânia/GO)",
       periodo: "01/06/2026 - Presente",
-      descricao: "Manutenção de computadores e impressoras, suporte técnico e Desenvolvimento de sistemas.",
+      descricao: "Desenvolvedor Web, Full Stack, suporte.",
     },
     {
       cargo: "Estagiário de TI",
@@ -61,24 +61,21 @@ const SITE_DATA = {
 
   objetivo: {
     texto:
-      "Estudante de Análise e Desenvolvimento de Sistemas (ADS) buscando uma oportunidade " +
-      "de trabalho na área de TI. Interesse em desenvolvimento de software, infraestrutura " +
-      "e projetos. Interessado em aplicar conhecimentos acadêmicos e " +
-      "desenvolver habilidades práticas que contribuam para o sucesso da equipe e para o " +
-      "meu crescimento profissional.",
+      "Busco uma vaga como Desenvolvedor Júnior para aplicar o que já faço no dia a dia: " +
+      "interfaces com React, back-end em Java, Python e Node.js, bancos relacionais e " +
+      "ferramentas como Git, Docker e Kafka, agregando valor técnico e prático à equipe.",
     habilidades: [
       "Python — Avançado",
-      "Desenvolvimento Mobile — Avançado",
       "Java — Avançado",
       "JavaScript — Avançado",
-      "HTML — Avançado",
-      "CSS — Avançado",
-      "React — Avançado",
+      "HTML, CSS e React — Avançado",
       "Full Stack — Avançado",
-      "SQL — Avançado",
+      "Kotlin (Android) — Conhecimento sólido",
+      "MySQL — Avançado",
+      "PostgreSQL — Avançado",
+      "Oracle — Intermediário",
       "Pacote Office — Avançado",
       "Hardware — Avançado",
-      "Inglês — Avançado",
       "Empatia",
       "Trabalho em equipe",
       "Paciente",
@@ -86,6 +83,71 @@ const SITE_DATA = {
       "Prático",
     ],
   },
+
+  /* -------------------------------------------------------------------- */
+  /* Projetos                                                             */
+  /* Coloque as fotos em img/projetos/<pasta-do-projeto>/ e liste aqui.   */
+  /* - capa: foto que aparece no card (se vazio, usa a primeira foto).    */
+  /* - fotos: cada item pode ser só o caminho ("img/...jpg") ou um objeto */
+  /*   { src: "img/...jpg", legenda: "Texto abaixo da foto" }.            */
+  /* - Enquanto o src estiver vazio, aparece um espaço reservado.         */
+  /* -------------------------------------------------------------------- */
+  projetos: [
+    {
+      titulo: "Flappy Fish",
+      categoria: "Jogo · Java Swing",
+      ano: "2025",
+      descricao:
+        "Meu primeiro projeto na faculdade: uma releitura do Flappy Bird no fundo do mar, feita " +
+        "em Java com Swing. Tem modo para 1 jogador e para 2 jogadores em tela dividida, " +
+        "pontuação e um ranking dos 5 melhores salvo localmente, que continua lá depois que o " +
+        "jogo é fechado.",
+      capa: "img/projetos/flappy-fish/capa.jpg",
+      fotos: [
+        { src: "img/projetos/flappy-fish/menu-principal.jpg", legenda: "Menu principal" },
+        { src: "img/projetos/flappy-fish/jogo-1-jogador.png", legenda: "Partida no modo 1 jogador" },
+        { src: "img/projetos/flappy-fish/jogo-2-jogadores.png", legenda: "Modo 2 jogadores com tela dividida" },
+        { src: "img/projetos/flappy-fish/game-over.jpg", legenda: "Tela de game over" },
+        { src: "img/projetos/flappy-fish/ranking.png", legenda: "Ranking dos 5 melhores, salvo localmente" },
+      ],
+    },
+    {
+      titulo: "Estoque TI",
+      categoria: "Sistema web · Full Stack",
+      ano: "2026",
+      descricao:
+        "Sistema web que desenvolvi no INGOH para substituir o controle manual do estoque da TI. " +
+        "Registra entradas, saídas, devoluções e perdas com histórico, mostra o que cada " +
+        "colaborador recebeu e monta a lista de compras sozinho quando um item chega ao mínimo, " +
+        "gerando o formulário de compras em Word com um clique. Tem perfis de acesso, auditoria " +
+        "e foco em segurança. Feito com Python (FastAPI), PostgreSQL, React e Docker.",
+      capa: "img/projetos/estoque-ti/capa.png",
+      fotos: [
+        { src: "img/projetos/estoque-ti/painel.jpg", legenda: "Painel com a visão geral do estoque" },
+        { src: "img/projetos/estoque-ti/painel-escuro.jpg", legenda: "O mesmo painel no modo escuro" },
+        { src: "img/projetos/estoque-ti/itens.jpg", legenda: "Itens em estoque, com busca e alerta de reposição" },
+        { src: "img/projetos/estoque-ti/detalhe-item.jpg", legenda: "Detalhe do item: movimentações e histórico com estorno" },
+        { src: "img/projetos/estoque-ti/lista-de-compras.jpg", legenda: "Lista de compras automática pelo estoque mínimo" },
+      ],
+    },
+    {
+      titulo: "Material Esterilizável",
+      categoria: "Sistema web · Full Stack",
+      ano: "2026",
+      descricao:
+        "Sistema que fiz para o INGOH controlar o estoque de material esterilizável. Cobre o " +
+        "cadastro de insumos, setores e usuários, os lotes com validade e o fluxo completo do " +
+        "expurgo, do recebimento do material sujo até a liberação de volta ao setor, registrando " +
+        "quem fez cada etapa. Gera relatórios em Excel e o protocolo de entrega em PDF. Feito com " +
+        "Python (FastAPI), PostgreSQL, React e Docker.",
+      capa: "img/projetos/material-esterilizavel/capa.png",
+      fotos: [
+        { src: "img/projetos/material-esterilizavel/login.jpg", legenda: "Tela de login" },
+        { src: "img/projetos/material-esterilizavel/painel.jpg", legenda: "Painel com lotes, expurgo e não conformidades" },
+        { src: "img/projetos/material-esterilizavel/relatorios.jpg", legenda: "Relatório gerencial em Excel e protocolo em PDF" },
+      ],
+    },
+  ],
 
   contato: {
     email: "cauegontijo@gmail.com",

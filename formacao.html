@@ -4,27 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formação e Cursos — Cauê Gontijo</title>
+  <meta name="description" content="Portfólio de Cauê Gontijo, estudante de Análise e Desenvolvimento de Sistemas em Goiânia/GO.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="formacao">
 
   <header class="site-header">
-    <nav class="nav-bar">
-      <ul class="nav-menu">
-        <li><a href="index.html" data-page="sobre">Sobre Mim</a></li>
-        <li><a href="formacao.html" data-page="formacao">Formação e Cursos</a></li>
-        <li><a href="experiencia.html" data-page="experiencia">Experiência Profissional</a></li>
-        <li><a href="objetivo.html" data-page="objetivo">Objetivo Profissional</a></li>
-        <li><a href="contato.html" data-page="contato">Contato</a></li>
-      </ul>
-    </nav>
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">CG</span>
+        <span class="brand-name" data-nome>Cauê Gontijo</span>
+      </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+      <nav class="nav-bar" aria-label="Principal">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html" data-page="sobre">Sobre</a></li>
+          <li><a href="formacao.html" data-page="formacao">Formação</a></li>
+          <li><a href="experiencia.html" data-page="experiencia">Experiência</a></li>
+          <li><a href="projetos.html" data-page="projetos">Projetos</a></li>
+          <li><a href="objetivo.html" data-page="objetivo">Objetivo</a></li>
+          <li><a href="contato.html" data-page="contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <section class="page-hero">
     <div class="container">
-      <span class="eyebrow">Portfólio</span>
+      <span class="eyebrow">02 &mdash; Formação</span>
       <h1>Formação e Cursos</h1>
       <p class="lead">Minha trajetória acadêmica e cursos complementares.</p>
     </div>
@@ -33,20 +43,27 @@
   <main>
     <div class="container">
       <section>
-        <h2 class="section-title">Formação Acadêmica</h2>
-        <div id="lista-formacao"></div>
+        <div class="section-head">
+          <span class="section-num">a.</span>
+          <h2 class="section-title">Formação acadêmica</h2>
+        </div>
+        <ol class="timeline" id="lista-formacao"></ol>
       </section>
 
       <section>
-        <h2 class="section-title">Cursos e Certificações</h2>
-        <div id="lista-cursos"></div>
+        <div class="section-head">
+          <span class="section-num">b.</span>
+          <h2 class="section-title">Cursos e certificações</h2>
+        </div>
+        <ol class="timeline" id="lista-cursos"></ol>
       </section>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      &copy; <span id="year"></span> <span data-nome>Cauê Gontijo</span>. Todos os direitos reservados.
+      <span>&copy; <span id="year"></span> <span data-nome>Cauê Gontijo</span> &middot; Goiânia/GO</span>
+      <ul class="footer-links" id="footer-links"></ul>
     </div>
   </footer>
 
