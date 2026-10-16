@@ -27,17 +27,15 @@ document.addEventListener("DOMContentLoaded", () => {
   renderContato();
 });
 
-// Menu recolhível no celular
+// No celular o menu rola para o lado; centraliza a aba atual
 function setupMenu() {
-  const toggle = document.querySelector(".nav-toggle");
   const nav = document.querySelector(".nav-bar");
-  if (!toggle || !nav) return;
+  const ativo = nav && nav.querySelector("a.active");
+  if (!ativo || nav.scrollWidth <= nav.clientWidth) return;
 
-  toggle.addEventListener("click", () => {
-    const open = nav.classList.toggle("open");
-    toggle.setAttribute("aria-expanded", open);
-    toggle.textContent = open ? "Fechar" : "Menu";
-  });
+  const a = ativo.getBoundingClientRect();
+  const n = nav.getBoundingClientRect();
+  nav.scrollLeft += a.left - n.left - (n.width - a.width) / 2;
 }
 
 function renderFooter() {
