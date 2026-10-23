@@ -224,7 +224,7 @@ function renderProjetos() {
       return `
       <button type="button" class="project-card" data-index="${i}" aria-label="Abrir fotos de ${p.titulo}">
         <div class="project-cover">
-          ${capa ? `<img src="${capa}" alt="" loading="lazy">` : '<div class="placeholder">Capa do projeto</div>'}
+          ${capa ? `<img src="${capa}" alt="" loading="lazy"${p.capaPosicao ? ` style="object-position: ${p.capaPosicao}"` : ""}>` : '<div class="placeholder">Capa do projeto</div>'}
           <span class="open-hint">Ver book &middot; ${qtd} ${qtd === 1 ? "foto" : "fotos"}</span>
         </div>
         <div class="project-info">

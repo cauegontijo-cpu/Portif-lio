@@ -88,6 +88,8 @@ const SITE_DATA = {
   /* Projetos                                                             */
   /* Coloque as fotos em img/projetos/<pasta-do-projeto>/ e liste aqui.   */
   /* - capa: foto que aparece no card (se vazio, usa a primeira foto).    */
+/* - capaPosicao (opcional): parte da capa que aparece se for cortada,  */
+/*   ex.: "left center". O padrão é o centro.                           */
   /* - fotos: cada item pode ser só o caminho ("img/...jpg") ou um objeto */
   /*   { src: "img/...jpg", legenda: "Texto abaixo da foto" }.            */
   /* - Enquanto o src estiver vazio, aparece um espaço reservado.         */
@@ -145,6 +147,49 @@ const SITE_DATA = {
         { src: "img/projetos/material-esterilizavel/login.jpg", legenda: "Tela de login" },
         { src: "img/projetos/material-esterilizavel/painel.jpg", legenda: "Painel com lotes, expurgo e não conformidades" },
         { src: "img/projetos/material-esterilizavel/relatorios.jpg", legenda: "Relatório gerencial em Excel e protocolo em PDF" },
+      ],
+    },
+    {
+      titulo: "FinPilot",
+      categoria: "Sistema web · Finanças pessoais",
+      ano: "2026",
+      descricao:
+        "Plataforma de finanças pessoais que construí do zero em Python. Nasceu de um incômodo: " +
+        "apps e planilhas contam a compra no cartão duas vezes e tratam transferência como " +
+        "receita. No FinPilot, cada número diz se já aconteceu, se é do mês ou se ainda vai " +
+        "vencer. Tem contas, cartões com parcelas e faturas, orçamentos, metas, recorrências, " +
+        "importação de CSV, relatórios em PDF e previsão de saldo para 90 dias. Feito com " +
+        "FastAPI, PostgreSQL, HTMX, Tailwind, Redis e Docker.",
+      capa: "img/projetos/finpilot/capa.png",
+      capaPosicao: "left center",
+      fotos: [
+        { src: "img/projetos/finpilot/01-pagina-inicial.png", legenda: "Página inicial" },
+        { src: "img/projetos/finpilot/02-login.png", legenda: "Login" },
+        { src: "img/projetos/finpilot/03-dashboard.png", legenda: "Dashboard com indicadores e gráficos do mês" },
+        { src: "img/projetos/finpilot/04-transacoes.png", legenda: "Transações com filtros e resumo do mês" },
+        { src: "img/projetos/finpilot/04b-novo-lancamento.png", legenda: "Novo lançamento de receita ou despesa" },
+        { src: "img/projetos/finpilot/05-contas.png", legenda: "Contas e saldo total disponível" },
+        { src: "img/projetos/finpilot/06-cartoes.png", legenda: "Cartões de crédito com limite e fatura atual" },
+        { src: "img/projetos/finpilot/07-cartao-faturas-e-compras.png", legenda: "Faturas e compras de um cartão" },
+        { src: "img/projetos/finpilot/08-detalhe-da-fatura.png", legenda: "Detalhe da fatura com as parcelas" },
+        { src: "img/projetos/finpilot/09-orcamentos.png", legenda: "Orçamentos por categoria com alertas de limite" },
+        { src: "img/projetos/finpilot/10-metas.png", legenda: "Metas financeiras" },
+        { src: "img/projetos/finpilot/11-detalhe-da-meta.png", legenda: "Detalhe da meta com estimativa de conclusão" },
+        { src: "img/projetos/finpilot/12-recorrencias.png", legenda: "Lançamentos recorrentes" },
+        { src: "img/projetos/finpilot/13-previsao-de-caixa.png", legenda: "Previsão de saldo para os próximos 90 dias" },
+        { src: "img/projetos/finpilot/14-relatorios.png", legenda: "Relatórios disponíveis" },
+        { src: "img/projetos/finpilot/15-relatorio-categorias.png", legenda: "Relatório de gastos por categoria" },
+        { src: "img/projetos/finpilot/16-importacao-csv.png", legenda: "Importação de extrato em CSV" },
+        { src: "img/projetos/finpilot/17-categorias.png", legenda: "Categorias de despesas e receitas" },
+        { src: "img/projetos/finpilot/18-transferencias.png", legenda: "Transferências entre contas próprias" },
+        { src: "img/projetos/finpilot/19-auditoria.png", legenda: "Registro de auditoria da conta" },
+        { src: "img/projetos/finpilot/20-configuracoes.png", legenda: "Configurações de perfil, senha e sessões" },
+        { src: "img/projetos/finpilot/21-dashboard-escuro.png", legenda: "Dashboard no modo escuro" },
+        { src: "img/projetos/finpilot/22-transacoes-escuro.png", legenda: "Transações no modo escuro" },
+        { src: "img/projetos/finpilot/23-cartoes-escuro.png", legenda: "Cartões no modo escuro" },
+        { src: "img/projetos/finpilot/24-celular-dashboard.png", legenda: "Dashboard no celular" },
+        { src: "img/projetos/finpilot/25-celular-transacoes.png", legenda: "Transações no celular" },
+        { src: "img/projetos/finpilot/26-celular-cartoes.png", legenda: "Cartões no celular" },
       ],
     },
   ],
