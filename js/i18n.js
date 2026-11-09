@@ -82,6 +82,7 @@ const UI = {
     "book.anterior": "Foto anterior",
     "book.proxima": "Próxima foto",
     "book.foto": "Foto",
+    "book.visitar": "Visitar site",
 
     "objetivo.eyebrow": "05 — Objetivo",
     "objetivo.titulo": "Objetivo Profissional",
@@ -170,6 +171,7 @@ const UI = {
     "book.anterior": "Previous photo",
     "book.proxima": "Next photo",
     "book.foto": "Photo",
+    "book.visitar": "Visit website",
 
     "objetivo.eyebrow": "05 — Objective",
     "objetivo.titulo": "Career Objective",
@@ -258,6 +260,7 @@ const UI = {
     "book.anterior": "Foto anterior",
     "book.proxima": "Foto siguiente",
     "book.foto": "Foto",
+    "book.visitar": "Visitar sitio",
 
     "objetivo.eyebrow": "05 — Objetivo",
     "objetivo.titulo": "Objetivo Profesional",

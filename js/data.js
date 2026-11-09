@@ -328,6 +328,43 @@ const SITE_DATA = {
         { src: "img/projetos/finpilot/26-celular-cartoes.png", legenda: { pt: "Cartões no celular", en: "Cards on mobile", es: "Tarjetas en el celular" } },
       ],
     },
+    {
+      titulo: "Valquíria Pontes Studio",
+      categoria: { pt: "Site e agendamento · Em produção", en: "Website and booking · In production", es: "Sitio y reservas · En producción" },
+      ano: "2026",
+      /* link (opcional): aparece no book como "Visitar site" */
+      link: "https://valquiriapontestudios.com.br",
+      descricao: {
+        pt:
+          "Site e sistema de agendamento de um estúdio de depilação e sobrancelhas em Goiânia, " +
+          "em produção e usado pela proprietária no dia a dia. As clientes agendam sozinhas, 24h, " +
+          "sem criar conta, e podem cancelar ou remarcar pelo link; no painel ela gerencia agenda, " +
+          "serviços, preços, textos do site e vendas. Adequado à LGPD. Feito com Next.js, React, " +
+          "TypeScript, PostgreSQL (Supabase) e Prisma, com mais de 170 testes automatizados.",
+        en:
+          "Website and booking system for a waxing and eyebrow studio in Goiânia, live in " +
+          "production and used by the owner every day. Clients book on their own, 24/7, without " +
+          "an account, and can cancel or reschedule through their link; in the admin panel she " +
+          "manages the schedule, services, prices, site content and sales. LGPD compliant. Built " +
+          "with Next.js, React, TypeScript, PostgreSQL (Supabase) and Prisma, with over 170 " +
+          "automated tests.",
+        es:
+          "Sitio web y sistema de reservas de un estudio de depilación y cejas en Goiânia, en " +
+          "producción y usado por la propietaria a diario. Las clientas reservan solas, 24 h, sin " +
+          "crear cuenta, y pueden cancelar o reprogramar desde su enlace; en el panel ella gestiona " +
+          "agenda, servicios, precios, textos del sitio y ventas. Adecuado a la LGPD. Hecho con " +
+          "Next.js, React, TypeScript, PostgreSQL (Supabase) y Prisma, con más de 170 pruebas " +
+          "automatizadas.",
+      },
+      capa: "img/projetos/valquiria-pontes/capa.png",
+      fotos: [
+        { src: "img/projetos/valquiria-pontes/capa.png", legenda: { pt: "Apresentação do projeto", en: "Project overview", es: "Presentación del proyecto" } },
+        { src: "img/projetos/valquiria-pontes/pagina-inicial.webp", legenda: { pt: "Página inicial", en: "Home page", es: "Página de inicio" } },
+        { src: "img/projetos/valquiria-pontes/servicos.webp", legenda: { pt: "Serviços e preços por categoria", en: "Services and prices by category", es: "Servicios y precios por categoría" } },
+        { src: "img/projetos/valquiria-pontes/agendamento.webp", legenda: { pt: "Agendamento online em 4 passos", en: "Online booking in 4 steps", es: "Reserva online en 4 pasos" } },
+        { src: "img/projetos/valquiria-pontes/celular.webp", legenda: { pt: "Página inicial no celular", en: "Home page on mobile", es: "Página de inicio en el celular" } },
+      ],
+    },
   ],
 
   contato: {

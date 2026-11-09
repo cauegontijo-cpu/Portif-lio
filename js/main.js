@@ -292,6 +292,9 @@ function criaBook(projetos) {
       [t(projeto.categoria), projeto.ano].filter(Boolean).join(" · ");
     document.getElementById("book-title").textContent = t(projeto.titulo);
     document.getElementById("book-desc").textContent = t(projeto.descricao);
+    const linkEl = document.getElementById("book-link");
+    linkEl.hidden = !projeto.link;
+    if (projeto.link) linkEl.href = projeto.link;
     document.getElementById("book-total").textContent = pad(fotos.length);
 
     thumbs.innerHTML = fotos
