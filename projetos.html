@@ -18,14 +18,14 @@
         <span class="brand-mark">CG</span>
         <span class="brand-name" data-nome>Cauê Gontijo</span>
       </a>
-      <nav class="nav-bar" aria-label="Principal">
+      <nav class="nav-bar" aria-label="Principal" data-i18n-aria="nav.aria">
         <ul class="nav-menu" id="nav-menu">
-          <li><a href="index.html" data-page="sobre">Sobre</a></li>
-          <li><a href="formacao.html" data-page="formacao">Formação</a></li>
-          <li><a href="experiencia.html" data-page="experiencia">Experiência</a></li>
-          <li><a href="projetos.html" data-page="projetos">Projetos</a></li>
-          <li><a href="objetivo.html" data-page="objetivo">Objetivo</a></li>
-          <li><a href="contato.html" data-page="contato">Contato</a></li>
+          <li><a href="index.html" data-page="sobre" data-i18n="nav.sobre">Sobre</a></li>
+          <li><a href="formacao.html" data-page="formacao" data-i18n="nav.formacao">Formação</a></li>
+          <li><a href="experiencia.html" data-page="experiencia" data-i18n="nav.experiencia">Experiência</a></li>
+          <li><a href="projetos.html" data-page="projetos" data-i18n="nav.projetos">Projetos</a></li>
+          <li><a href="objetivo.html" data-page="objetivo" data-i18n="nav.objetivo">Objetivo</a></li>
+          <li><a href="contato.html" data-page="contato" data-i18n="nav.contato">Contato</a></li>
         </ul>
       </nav>
     </div>
@@ -33,9 +33,9 @@
 
   <section class="page-hero">
     <div class="container">
-      <span class="eyebrow">04 &mdash; Projetos</span>
-      <h1>Projetos</h1>
-      <p class="lead">Alguns trabalhos que desenvolvi. Clique em um projeto para vê-lo.</p>
+      <span class="eyebrow" data-i18n="projetos.eyebrow">04 &mdash; Projetos</span>
+      <h1 data-i18n="projetos.titulo">Projetos</h1>
+      <p class="lead" data-i18n="projetos.lead">Alguns trabalhos que desenvolvi. Clique em um projeto para vê-lo.</p>
     </div>
   </section>
 
@@ -44,7 +44,7 @@
       <section>
         <div class="section-head">
           <span class="section-num">a.</span>
-          <h2 class="section-title">Trabalhos selecionados</h2>
+          <h2 class="section-title" data-i18n="projetos.selecionados">Trabalhos selecionados</h2>
           <span class="section-note" id="projetos-total"></span>
         </div>
         <div class="projects-grid" id="lista-projetos"></div>
@@ -60,14 +60,14 @@
       <div class="book-count"><strong id="book-atual">01</strong> / <span id="book-total">01</span></div>
     </aside>
     <div class="book-main">
-      <button type="button" class="book-close">Fechar &times;</button>
+      <button type="button" class="book-close"><span data-i18n="book.fechar">Fechar</span> &times;</button>
       <div class="book-stage">
-        <button type="button" class="book-nav prev" aria-label="Foto anterior">&larr;</button>
+        <button type="button" class="book-nav prev" aria-label="Foto anterior" data-i18n-aria="book.anterior">&larr;</button>
         <figure class="book-figure">
           <div class="book-frame" id="book-frame"></div>
           <figcaption class="book-caption" id="book-caption"></figcaption>
         </figure>
-        <button type="button" class="book-nav next" aria-label="Próxima foto">&rarr;</button>
+        <button type="button" class="book-nav next" aria-label="Próxima foto" data-i18n-aria="book.proxima">&rarr;</button>
       </div>
       <div class="book-thumbs" id="book-thumbs"></div>
     </div>
@@ -81,6 +81,7 @@
   </footer>
 
   <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

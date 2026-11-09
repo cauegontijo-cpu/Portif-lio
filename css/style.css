@@ -163,6 +163,48 @@ button {
   transform: scaleX(1);
 }
 
+/* Seletor de idioma (PT · EN · ES) */
+.header-inner {
+  position: relative;
+}
+
+.lang-switch {
+  display: flex;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.lang-switch button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.72);
+  font: 600 11.5px/1 var(--sans);
+  letter-spacing: 0.08em;
+  padding: 7px 9px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.lang-switch button + button {
+  border-left: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.lang-switch button:hover {
+  color: var(--branco);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lang-switch button.active {
+  background: var(--branco);
+  color: var(--vinho);
+}
+
+.lang-switch button:focus-visible {
+  outline: 2px solid var(--branco);
+  outline-offset: 2px;
+}
+
 /* ---------------------------------------------------------------------- */
 /* Hero                                                                   */
 /* ---------------------------------------------------------------------- */
@@ -1045,12 +1087,19 @@ section + section {
   }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1024px) {
   .header-inner {
     flex-direction: column;
     align-items: stretch;
     gap: 0;
     padding-top: 12px;
+  }
+
+  /* No celular o seletor fica no canto, na mesma linha do nome */
+  .lang-switch {
+    position: absolute;
+    top: 12px;
+    right: 32px;
   }
 
   .nav-bar {
@@ -1089,6 +1138,11 @@ section + section {
 
   .header-inner {
     padding: 14px 16px 0;
+  }
+
+  .lang-switch {
+    top: 14px;
+    right: 16px;
   }
 
   .page-hero {

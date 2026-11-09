@@ -18,14 +18,14 @@
         <span class="brand-mark">CG</span>
         <span class="brand-name" data-nome>Cauê Gontijo</span>
       </a>
-      <nav class="nav-bar" aria-label="Principal">
+      <nav class="nav-bar" aria-label="Principal" data-i18n-aria="nav.aria">
         <ul class="nav-menu" id="nav-menu">
-          <li><a href="index.html" data-page="sobre">Sobre</a></li>
-          <li><a href="formacao.html" data-page="formacao">Formação</a></li>
-          <li><a href="experiencia.html" data-page="experiencia">Experiência</a></li>
-          <li><a href="projetos.html" data-page="projetos">Projetos</a></li>
-          <li><a href="objetivo.html" data-page="objetivo">Objetivo</a></li>
-          <li><a href="contato.html" data-page="contato">Contato</a></li>
+          <li><a href="index.html" data-page="sobre" data-i18n="nav.sobre">Sobre</a></li>
+          <li><a href="formacao.html" data-page="formacao" data-i18n="nav.formacao">Formação</a></li>
+          <li><a href="experiencia.html" data-page="experiencia" data-i18n="nav.experiencia">Experiência</a></li>
+          <li><a href="projetos.html" data-page="projetos" data-i18n="nav.projetos">Projetos</a></li>
+          <li><a href="objetivo.html" data-page="objetivo" data-i18n="nav.objetivo">Objetivo</a></li>
+          <li><a href="contato.html" data-page="contato" data-i18n="nav.contato">Contato</a></li>
         </ul>
       </nav>
     </div>
@@ -34,16 +34,16 @@
   <section class="page-hero hero-home">
     <div class="container">
       <div>
-        <span class="eyebrow">Portfólio</span>
+        <span class="eyebrow" data-i18n="home.eyebrow">Portfólio</span>
         <h1 data-nome>Cauê Gontijo</h1>
         <p class="lead" id="hero-cargo"></p>
         <div class="hero-meta">
-          <span>Base <strong id="hero-local">Goiânia/GO</strong></span>
-          <span>Status <strong>Aberto a oportunidades</strong></span>
+          <span><span data-i18n="home.base">Base</span> <strong id="hero-local">Goiânia/GO</strong></span>
+          <span><span data-i18n="home.status">Status</span> <strong data-i18n="home.statusValor">Aberto a oportunidades</strong></span>
         </div>
         <div class="hero-actions">
-          <a href="projetos.html" class="btn btn-solid">Ver projetos <span class="arrow">&rarr;</span></a>
-          <a href="contato.html" class="btn btn-ghost">Fale comigo</a>
+          <a href="projetos.html" class="btn btn-solid"><span data-i18n="home.verProjetos">Ver projetos</span> <span class="arrow">&rarr;</span></a>
+          <a href="contato.html" class="btn btn-ghost" data-i18n="home.faleComigo">Fale comigo</a>
         </div>
       </div>
       <div class="photo-frame" id="foto-frame">Sua foto aqui</div>
@@ -55,7 +55,7 @@
       <section>
         <div class="section-head">
           <span class="section-num">01</span>
-          <h2 class="section-title">Sobre mim</h2>
+          <h2 class="section-title" data-i18n="home.sobreTitulo">Sobre mim</h2>
         </div>
         <p class="prose-lg" id="sobre-texto"></p>
       </section>
@@ -68,14 +68,14 @@
       <section>
         <div class="section-head">
           <span class="section-num">02–06</span>
-          <h2 class="section-title">Continue por aqui</h2>
+          <h2 class="section-title" data-i18n="home.continue">Continue por aqui</h2>
         </div>
         <ul class="page-index">
-          <li><a href="formacao.html"><span class="idx">02</span><span class="name">Formação e Cursos</span><span class="hint">Trajetória acadêmica</span></a></li>
-          <li><a href="experiencia.html"><span class="idx">03</span><span class="name">Experiência Profissional</span><span class="hint">Onde já trabalhei</span></a></li>
-          <li><a href="projetos.html"><span class="idx">04</span><span class="name">Projetos</span><span class="hint">Fotos e detalhes</span></a></li>
-          <li><a href="objetivo.html"><span class="idx">05</span><span class="name">Objetivo Profissional</span><span class="hint">Habilidades e foco</span></a></li>
-          <li><a href="contato.html"><span class="idx">06</span><span class="name">Contato</span><span class="hint">E-mail, LinkedIn, GitHub</span></a></li>
+          <li><a href="formacao.html"><span class="idx">02</span><span class="name" data-i18n="home.idx.formacao">Formação e Cursos</span><span class="hint" data-i18n="home.idx.formacaoHint">Trajetória acadêmica</span></a></li>
+          <li><a href="experiencia.html"><span class="idx">03</span><span class="name" data-i18n="home.idx.experiencia">Experiência Profissional</span><span class="hint" data-i18n="home.idx.experienciaHint">Onde já trabalhei</span></a></li>
+          <li><a href="projetos.html"><span class="idx">04</span><span class="name" data-i18n="home.idx.projetos">Projetos</span><span class="hint" data-i18n="home.idx.projetosHint">Fotos e detalhes</span></a></li>
+          <li><a href="objetivo.html"><span class="idx">05</span><span class="name" data-i18n="home.idx.objetivo">Objetivo Profissional</span><span class="hint" data-i18n="home.idx.objetivoHint">Habilidades e foco</span></a></li>
+          <li><a href="contato.html"><span class="idx">06</span><span class="name" data-i18n="home.idx.contato">Contato</span><span class="hint" data-i18n="home.idx.contatoHint">E-mail, LinkedIn, GitHub</span></a></li>
         </ul>
       </section>
     </div>
@@ -89,6 +89,7 @@
   </footer>
 
   <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

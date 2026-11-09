@@ -17,7 +17,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  criaSeletorIdioma();
+  renderTudo();
   setupMenu();
+  iniciaProjetos();
+
+  // Troca de idioma: redesenha os textos sem recarregar a página
+  document.addEventListener("idioma-alterado", renderTudo);
+});
+
+function renderTudo() {
+  aplicaTextosFixos();
   renderFooter();
   renderSobre();
   renderFormacao();
@@ -25,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderProjetos();
   renderObjetivo();
   renderContato();
-});
+}
 
 // No celular o menu rola para o lado; centraliza a aba atual
 function setupMenu() {
@@ -44,7 +54,7 @@ function renderFooter() {
 
   const c = SITE_DATA.contato;
   linksEl.innerHTML = `
-    <li><a href="mailto:${c.email}">E-mail</a></li>
+    <li><a href="mailto:${c.email}">${ui("contato.email")}</a></li>
     <li><a href="${c.linkedin}" target="_blank" rel="noopener">LinkedIn</a></li>
     <li><a href="${c.github}" target="_blank" rel="noopener">GitHub</a></li>
     <li><a href="${c.whatsapp}" target="_blank" rel="noopener">WhatsApp</a></li>
@@ -57,33 +67,33 @@ function renderSobre() {
   const fotoEl = document.getElementById("foto-frame");
   if (!sobreEl) return;
 
-  if (cargoEl) cargoEl.textContent = SITE_DATA.profile.cargo.trim();
-  sobreEl.textContent = SITE_DATA.profile.sobre;
+  if (cargoEl) cargoEl.textContent = t(SITE_DATA.profile.cargo).trim();
+  sobreEl.textContent = t(SITE_DATA.profile.sobre);
 
-  if (fotoEl && SITE_DATA.profile.foto) {
+  if (fotoEl && SITE_DATA.profile.foto && !fotoEl.querySelector("img")) {
     fotoEl.innerHTML = `<img src="${SITE_DATA.profile.foto}" alt="${SITE_DATA.profile.nome}">`;
   }
 
   const localEl = document.getElementById("hero-local");
-  if (localEl) localEl.textContent = SITE_DATA.contato.localizacao;
+  if (localEl) localEl.textContent = t(SITE_DATA.contato.localizacao);
 
   // Resumo: experiência atual e formação em andamento
   const atual = SITE_DATA.experiencias[0];
   const atualEl = document.getElementById("resumo-atual");
   if (atualEl && atual) {
     atualEl.innerHTML = `
-      <div class="fact-label">Atualmente</div>
-      <div class="fact-title">${atual.cargo}</div>
-      <div class="fact-sub">${atual.empresa}</div>`;
+      <div class="fact-label">${ui("home.atualmente")}</div>
+      <div class="fact-title">${t(atual.cargo)}</div>
+      <div class="fact-sub">${t(atual.empresa)}</div>`;
   }
 
   const formacao = SITE_DATA.formacoes[0];
   const formacaoEl = document.getElementById("resumo-formacao");
   if (formacaoEl && formacao) {
     formacaoEl.innerHTML = `
-      <div class="fact-label">Formação</div>
-      <div class="fact-title">${formacao.curso}</div>
-      <div class="fact-sub">${formacao.instituicao} &middot; ${formacao.descricao}</div>`;
+      <div class="fact-label">${ui("home.formacao")}</div>
+      <div class="fact-title">${t(formacao.curso)}</div>
+      <div class="fact-sub">${t(formacao.instituicao)} &middot; ${t(formacao.descricao)}</div>`;
   }
 }
 
@@ -93,12 +103,12 @@ function renderFormacao() {
 
   if (formacaoEl) {
     formacaoEl.innerHTML = SITE_DATA.formacoes
-      .map((item) => timelineHTML(item.periodo, item.curso, item.instituicao, item.descricao))
+      .map((item) => timelineHTML(t(item.periodo), t(item.curso), t(item.instituicao), t(item.descricao)))
       .join("");
   }
   if (cursosEl) {
     cursosEl.innerHTML = SITE_DATA.cursos
-      .map((item) => timelineHTML(item.periodo, item.curso, item.instituicao, item.descricao))
+      .map((item) => timelineHTML(t(item.periodo), t(item.curso), t(item.instituicao), t(item.descricao)))
       .join("");
   }
 }
@@ -109,8 +119,8 @@ function renderExperiencia() {
 
   listaEl.innerHTML = SITE_DATA.experiencias
     .map((item) => {
-      const atual = /presente/i.test(item.periodo);
-      return timelineHTML(item.periodo, item.cargo, item.empresa, item.descricao, atual);
+      const atual = item.atual ?? /presente/i.test(t(item.periodo));
+      return timelineHTML(t(item.periodo), t(item.cargo), t(item.empresa), t(item.descricao), atual);
     })
     .join("");
 }
@@ -120,7 +130,7 @@ function timelineHTML(data, titulo, local, descricao, atual) {
     <li class="timeline-item">
       <div class="timeline-date">
         ${data}
-        ${atual ? '<br><span class="badge">Atual</span>' : ""}
+        ${atual ? `<br><span class="badge">${ui("experiencia.atual")}</span>` : ""}
       </div>
       <div>
         <h3 class="timeline-title">${titulo}</h3>
@@ -134,13 +144,13 @@ function renderObjetivo() {
   const textoEl = document.getElementById("objetivo-texto");
   if (!textoEl) return;
 
-  textoEl.textContent = SITE_DATA.objetivo.texto;
+  textoEl.textContent = t(SITE_DATA.objetivo.texto);
 
   // "Python — Avançado" vira técnica com nível; sem nível vira competência pessoal
   const tecnicas = [];
   const pessoais = [];
   SITE_DATA.objetivo.habilidades.forEach((h) => {
-    const [nome, nivel] = h.split(/\s+—\s+/);
+    const [nome, nivel] = t(h).split(/\s+—\s+/);
     if (nivel) tecnicas.push({ nome, nivel });
     else pessoais.push(nome);
   });
@@ -171,8 +181,8 @@ function renderContato() {
   }
 
   listEl.innerHTML = `
-    <li><span class="label">Telefone</span><a href="${c.whatsapp}" target="_blank" rel="noopener">${c.telefone}</a></li>
-    <li><span class="label">Localização</span><span>${c.localizacao}</span></li>
+    <li><span class="label">${ui("contato.telefone")}</span><a href="${c.whatsapp}" target="_blank" rel="noopener">${c.telefone}</a></li>
+    <li><span class="label">${ui("contato.localizacao")}</span><span>${t(c.localizacao)}</span></li>
     <li><span class="label">LinkedIn</span><a href="${c.linkedin}" target="_blank" rel="noopener">${c.linkedinLabel || c.linkedin}</a></li>
     <li><span class="label">GitHub</span><a href="${c.github}" target="_blank" rel="noopener">${c.github.replace(/^https?:\/\//, "")}</a></li>
   `;
@@ -207,11 +217,11 @@ function renderProjetos() {
   const projetos = SITE_DATA.projetos || [];
   const totalEl = document.getElementById("projetos-total");
   if (totalEl) {
-    totalEl.textContent = `${projetos.length} ${projetos.length === 1 ? "projeto" : "projetos"}`;
+    totalEl.textContent = `${projetos.length} ${ui(projetos.length === 1 ? "projetos.um" : "projetos.varios")}`;
   }
 
   if (!projetos.length) {
-    gridEl.outerHTML = '<p class="empty-note">Novos projetos em breve.</p>';
+    gridEl.innerHTML = `<p class="empty-note">${ui("projetos.vazio")}</p>`;
     return;
   }
 
@@ -220,21 +230,28 @@ function renderProjetos() {
       const fotos = p.fotos.map(normalizaFoto);
       const capa = p.capa || (fotos.find((f) => f.src) || {}).src;
       const qtd = fotos.length;
-      const meta = [p.categoria, p.ano].filter(Boolean).join(" · ");
+      const meta = [t(p.categoria), p.ano].filter(Boolean).join(" · ");
       return `
-      <button type="button" class="project-card" data-index="${i}" aria-label="Abrir fotos de ${p.titulo}">
+      <button type="button" class="project-card" data-index="${i}" aria-label="${ui("projetos.abrir")} ${t(p.titulo)}">
         <div class="project-cover">
-          ${capa ? `<img src="${capa}" alt="" loading="lazy"${p.capaPosicao ? ` style="object-position: ${p.capaPosicao}"` : ""}>` : '<div class="placeholder">Capa do projeto</div>'}
-          <span class="open-hint">Ver book &middot; ${qtd} ${qtd === 1 ? "foto" : "fotos"}</span>
+          ${capa ? `<img src="${capa}" alt="" loading="lazy"${p.capaPosicao ? ` style="object-position: ${p.capaPosicao}"` : ""}>` : '<div class="placeholder">${ui("projetos.capa")}</div>'}
+          <span class="open-hint">${ui("projetos.verBook")} &middot; ${qtd} ${ui(qtd === 1 ? "projetos.foto" : "projetos.fotos")}</span>
         </div>
         <div class="project-info">
           <span class="project-num">${pad(i + 1)}</span>
-          <h3 class="project-title">${p.titulo}</h3>
+          <h3 class="project-title">${t(p.titulo)}</h3>
           <span class="project-meta">${meta}</span>
         </div>
       </button>`;
     })
     .join("");
+}
+
+// Liga os cliques e o book uma única vez (o grid é redesenhado ao trocar idioma)
+function iniciaProjetos() {
+  const gridEl = document.getElementById("lista-projetos");
+  const projetos = SITE_DATA.projetos || [];
+  if (!gridEl || !projetos.length) return;
 
   const book = criaBook(projetos);
   gridEl.addEventListener("click", (e) => {
@@ -242,10 +259,15 @@ function renderProjetos() {
     if (card) book.abrir(Number(card.dataset.index), card);
   });
 
-  // Permite abrir um projeto direto pelo link (ex.: projetos.html#projeto-01)
+  // Permite abrir um projeto direto pelo link (ex.: projetos.html#finpilot)
   const hash = decodeURIComponent(location.hash.slice(1));
-  const inicial = projetos.findIndex((p) => slugify(p.titulo) === hash);
+  const inicial = projetos.findIndex((p) => slugProjeto(p) === hash);
   if (inicial >= 0) book.abrir(inicial);
+}
+
+// O link do projeto usa sempre o título em português, para não mudar com o idioma
+function slugProjeto(p) {
+  return slugify(typeof p.titulo === "string" ? p.titulo : p.titulo.pt);
 }
 
 function criaBook(projetos) {
@@ -267,15 +289,15 @@ function criaBook(projetos) {
     origem = gatilho || null;
 
     document.getElementById("book-cat").textContent =
-      [projeto.categoria, projeto.ano].filter(Boolean).join(" · ");
-    document.getElementById("book-title").textContent = projeto.titulo;
-    document.getElementById("book-desc").textContent = projeto.descricao || "";
+      [t(projeto.categoria), projeto.ano].filter(Boolean).join(" · ");
+    document.getElementById("book-title").textContent = t(projeto.titulo);
+    document.getElementById("book-desc").textContent = t(projeto.descricao);
     document.getElementById("book-total").textContent = pad(fotos.length);
 
     thumbs.innerHTML = fotos
       .map(
         (f, i) => `
-        <button type="button" class="book-thumb" data-i="${i}" aria-label="Foto ${i + 1}">
+        <button type="button" class="book-thumb" data-i="${i}" aria-label="${ui("book.foto")} ${i + 1}">
           ${f.src ? `<img src="${f.src}" alt="" loading="lazy">` : `<span>${pad(i + 1)}</span>`}
         </button>`
       )
@@ -285,7 +307,7 @@ function criaBook(projetos) {
     el.hidden = false;
     document.body.classList.add("no-scroll");
     requestAnimationFrame(() => el.classList.add("is-open"));
-    history.replaceState(null, "", `#${slugify(projeto.titulo)}`);
+    history.replaceState(null, "", `#${slugProjeto(projeto)}`);
 
     mostrar(0, true);
     el.querySelector(".book-close").focus();
@@ -309,9 +331,9 @@ function criaBook(projetos) {
 
     const trocar = () => {
       frame.innerHTML = foto.src
-        ? `<img src="${foto.src}" alt="${foto.legenda || `${projeto.titulo} — foto ${i + 1}`}">`
-        : `<div class="placeholder">Foto ${pad(i + 1)}</div>`;
-      caption.textContent = foto.legenda || "";
+        ? `<img src="${foto.src}" alt="${t(foto.legenda) || `${t(projeto.titulo)} — ${ui("book.foto")} ${i + 1}`}">`
+        : `<div class="placeholder">${ui("book.foto")} ${pad(i + 1)}</div>`;
+      caption.textContent = t(foto.legenda);
       frame.classList.remove("is-changing");
     };
 
