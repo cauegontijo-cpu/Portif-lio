@@ -53,6 +53,17 @@ const UI = {
     "home.idx.contatoHint": "E-mail, LinkedIn, GitHub",
     "home.atualmente": "Atualmente",
     "home.formacao": "Formação",
+    "home.destaques": "Projetos em destaque",
+    "home.verTodos": "Ver todos os projetos",
+    "home.stat.projetos": "Projetos publicados",
+    "home.stat.experiencias": "Experiências em TI",
+    "home.stat.tecnologias": "Tecnologias no dia a dia",
+    "cta.eyebrow": "Próximo passo",
+    "cta.titulo": "Vamos construir algo juntos?",
+    "cta.texto": "Estou aberto a oportunidades como Desenvolvedor Júnior. Respondo rápido por e-mail ou WhatsApp.",
+    "cta.botao": "Entrar em contato",
+    "footer.topo": "Voltar ao topo",
+    "footer.papel": "Desenvolvedor Full Stack",
 
     "formacao.eyebrow": "02 — Formação",
     "formacao.titulo": "Formação e Cursos",
@@ -142,6 +153,17 @@ const UI = {
     "home.idx.contatoHint": "Email, LinkedIn, GitHub",
     "home.atualmente": "Currently",
     "home.formacao": "Education",
+    "home.destaques": "Featured projects",
+    "home.verTodos": "See all projects",
+    "home.stat.projetos": "Published projects",
+    "home.stat.experiencias": "IT positions",
+    "home.stat.tecnologias": "Technologies I use",
+    "cta.eyebrow": "Next step",
+    "cta.titulo": "Shall we build something together?",
+    "cta.texto": "I'm open to Junior Developer opportunities. I reply quickly by email or WhatsApp.",
+    "cta.botao": "Get in touch",
+    "footer.topo": "Back to top",
+    "footer.papel": "Full Stack Developer",
 
     "formacao.eyebrow": "02 — Education",
     "formacao.titulo": "Education & Courses",
@@ -231,6 +253,17 @@ const UI = {
     "home.idx.contatoHint": "Correo, LinkedIn, GitHub",
     "home.atualmente": "Actualmente",
     "home.formacao": "Formación",
+    "home.destaques": "Proyectos destacados",
+    "home.verTodos": "Ver todos los proyectos",
+    "home.stat.projetos": "Proyectos publicados",
+    "home.stat.experiencias": "Experiencias en TI",
+    "home.stat.tecnologias": "Tecnologías que uso",
+    "cta.eyebrow": "Próximo paso",
+    "cta.titulo": "¿Construimos algo juntos?",
+    "cta.texto": "Estoy abierto a oportunidades como Desarrollador Junior. Respondo rápido por correo o WhatsApp.",
+    "cta.botao": "Contactar",
+    "footer.topo": "Volver arriba",
+    "footer.papel": "Desarrollador Full Stack",
 
     "formacao.eyebrow": "02 — Formación",
     "formacao.titulo": "Formación y Cursos",
@@ -351,30 +384,96 @@ function aplicaTextosFixos() {
     el.setAttribute("aria-label", ui(el.dataset.i18nAria));
   });
 
-  document.querySelectorAll(".lang-switch button").forEach((b) => {
-    const ativo = b.dataset.lang === LANG;
-    b.classList.toggle("active", ativo);
-    b.setAttribute("aria-pressed", ativo);
-  });
+  atualizaSeletorIdioma();
 }
 
-// Cria o seletor PT · EN · ES no cabeçalho
+const ICONE_GLOBO =
+  '<svg class="lang-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>';
+const ICONE_SETA =
+  '<svg class="lang-caret" viewBox="0 0 12 12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4.5 6 7.5l3-3"/></svg>';
+const ICONE_CHECK =
+  '<svg class="lang-check" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m3.5 8.5 3 3 6-7"/></svg>';
+
+// Cria o seletor de idioma (um botão que abre um menu) no cabeçalho
 function criaSeletorIdioma() {
   const header = document.querySelector(".header-inner");
   if (!header || header.querySelector(".lang-switch")) return;
 
   const wrap = document.createElement("div");
   wrap.className = "lang-switch";
-  wrap.setAttribute("role", "group");
-  wrap.setAttribute("data-i18n-aria", "lang.aria");
-  wrap.innerHTML = IDIOMAS.map(
-    (i) =>
-      `<button type="button" data-lang="${i.code}" lang="${i.html}" title="${i.nome}" aria-label="${i.nome}">${i.label}</button>`
-  ).join("");
+  wrap.innerHTML = `
+    <button type="button" class="lang-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="lang-menu">
+      ${ICONE_GLOBO}<span class="lang-current"></span>${ICONE_SETA}
+    </button>
+    <ul class="lang-menu" id="lang-menu" hidden>
+      ${IDIOMAS.map(
+        (i) => `
+        <li><button type="button" class="lang-option" data-lang="${i.code}" lang="${i.html}">
+          <span class="lang-code">${i.label}</span><span class="lang-name">${i.nome}</span>${ICONE_CHECK}
+        </button></li>`
+      ).join("")}
+    </ul>`;
   header.appendChild(wrap);
 
-  wrap.addEventListener("click", (e) => {
-    const b = e.target.closest("button[data-lang]");
-    if (b) setIdioma(b.dataset.lang);
+  const toggle = wrap.querySelector(".lang-toggle");
+  const menu = wrap.querySelector(".lang-menu");
+  const opcoes = () => [...menu.querySelectorAll(".lang-option")];
+
+  function abrir() {
+    menu.hidden = false;
+    toggle.setAttribute("aria-expanded", "true");
+    wrap.classList.add("is-open");
+    (menu.querySelector(".lang-option.active") || opcoes()[0]).focus();
+  }
+
+  function fechar(devolverFoco) {
+    if (menu.hidden) return;
+    menu.hidden = true;
+    toggle.setAttribute("aria-expanded", "false");
+    wrap.classList.remove("is-open");
+    if (devolverFoco) toggle.focus();
+  }
+
+  toggle.addEventListener("click", () => (menu.hidden ? abrir() : fechar()));
+
+  menu.addEventListener("click", (e) => {
+    const b = e.target.closest(".lang-option");
+    if (!b) return;
+    setIdioma(b.dataset.lang);
+    fechar(true);
+  });
+
+  // Teclado: setas navegam, Esc fecha
+  wrap.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") return fechar(true);
+    if (menu.hidden || !["ArrowDown", "ArrowUp"].includes(e.key)) return;
+    e.preventDefault();
+    const lista = opcoes();
+    const i = lista.indexOf(document.activeElement);
+    const passo = e.key === "ArrowDown" ? 1 : -1;
+    lista[(i + passo + lista.length) % lista.length].focus();
+  });
+
+  // Fecha ao clicar fora ou quando o foco sai do seletor
+  document.addEventListener("click", (e) => {
+    if (!wrap.contains(e.target)) fechar();
+  });
+  wrap.addEventListener("focusout", (e) => {
+    if (e.relatedTarget && !wrap.contains(e.relatedTarget)) fechar();
+  });
+}
+
+function atualizaSeletorIdioma() {
+  const info = IDIOMAS.find((i) => i.code === LANG);
+  const toggle = document.querySelector(".lang-toggle");
+  if (!toggle) return;
+  toggle.querySelector(".lang-current").textContent = info.label;
+  toggle.setAttribute("aria-label", `${ui("lang.aria")}: ${info.nome}`);
+  toggle.title = ui("lang.aria");
+  document.querySelectorAll(".lang-option").forEach((b) => {
+    const ativo = b.dataset.lang === LANG;
+    b.classList.toggle("active", ativo);
+    if (ativo) b.setAttribute("aria-current", "true");
+    else b.removeAttribute("aria-current");
   });
 }

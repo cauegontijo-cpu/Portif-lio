@@ -170,6 +170,7 @@ const SITE_DATA = {
   /* - fotos: cada item pode ser só o caminho ("img/...jpg") ou um objeto */
   /*   { src: "img/...jpg", legenda: { pt: "...", en: "...", es: "..." } }*/
   /* - Enquanto o src estiver vazio, aparece um espaço reservado.         */
+  /* - stack: tecnologias que aparecem como etiquetas no card.            */
   /* -------------------------------------------------------------------- */
   projetos: [
     {
@@ -192,6 +193,7 @@ const SITE_DATA = {
           "dividida, puntuación y un ranking de los 5 mejores guardado localmente, que sigue ahí " +
           "después de cerrar el juego.",
       },
+      stack: ["Java", "Swing"],
       capa: "img/projetos/flappy-fish/capa.jpg",
       fotos: [
         { src: "img/projetos/flappy-fish/menu-principal.jpg", legenda: { pt: "Menu principal", en: "Main menu", es: "Menú principal" } },
@@ -227,6 +229,7 @@ const SITE_DATA = {
           "perfiles de acceso, auditoría y foco en seguridad. Hecho con Python (FastAPI), " +
           "PostgreSQL, React y Docker.",
       },
+      stack: ["Python", "FastAPI", "PostgreSQL", "React", "Docker"],
       capa: "img/projetos/estoque-ti/capa.png",
       fotos: [
         { src: "img/projetos/estoque-ti/painel.jpg", legenda: { pt: "Painel com a visão geral do estoque", en: "Dashboard with an inventory overview", es: "Panel con la visión general del inventario" } },
@@ -261,6 +264,7 @@ const SITE_DATA = {
           "Excel y el protocolo de entrega en PDF. Hecho con Python (FastAPI), PostgreSQL, React y " +
           "Docker.",
       },
+      stack: ["Python", "FastAPI", "PostgreSQL", "React", "Docker"],
       capa: "img/projetos/material-esterilizavel/capa.png",
       fotos: [
         { src: "img/projetos/material-esterilizavel/login.jpg", legenda: { pt: "Tela de login", en: "Login screen", es: "Pantalla de inicio de sesión" } },
@@ -296,6 +300,7 @@ const SITE_DATA = {
           "presupuestos, metas, recurrencias, importación de CSV, informes en PDF y previsión de " +
           "saldo a 90 días. Hecho con FastAPI, PostgreSQL, HTMX, Tailwind, Redis y Docker.",
       },
+      stack: ["FastAPI", "PostgreSQL", "HTMX", "Tailwind", "Redis", "Docker"],
       capa: "img/projetos/finpilot/capa.png",
       capaPosicao: "left center",
       fotos: [
@@ -356,7 +361,9 @@ const SITE_DATA = {
           "Next.js, React, TypeScript, PostgreSQL (Supabase) y Prisma, con más de 170 pruebas " +
           "automatizadas.",
       },
+      stack: ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma"],
       capa: "img/projetos/valquiria-pontes/capa.png",
+      capaPosicao: "left center",
       fotos: [
         { src: "img/projetos/valquiria-pontes/capa.png", legenda: { pt: "Apresentação do projeto", en: "Project overview", es: "Presentación del proyecto" } },
         { src: "img/projetos/valquiria-pontes/pagina-inicial.webp", legenda: { pt: "Página inicial", en: "Home page", es: "Página de inicio" } },

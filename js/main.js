@@ -18,9 +18,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   criaSeletorIdioma();
+  criaFaixaContato();
   renderTudo();
   setupMenu();
   iniciaProjetos();
+  setupCabecalho();
+  setupRevelar();
 
   // Troca de idioma: redesenha os textos sem recarregar a página
   document.addEventListener("idioma-alterado", renderTudo);
@@ -29,7 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
 function renderTudo() {
   aplicaTextosFixos();
   renderFooter();
+  renderFaixaContato();
   renderSobre();
+  renderStats();
+  renderDestaques();
   renderFormacao();
   renderExperiencia();
   renderProjetos();
@@ -49,16 +55,130 @@ function setupMenu() {
 }
 
 function renderFooter() {
-  const linksEl = document.getElementById("footer-links");
-  if (!linksEl) return;
+  const footerEl = document.querySelector(".site-footer .container");
+  if (!footerEl) return;
 
   const c = SITE_DATA.contato;
-  linksEl.innerHTML = `
-    <li><a href="mailto:${c.email}">${ui("contato.email")}</a></li>
-    <li><a href="${c.linkedin}" target="_blank" rel="noopener">LinkedIn</a></li>
-    <li><a href="${c.github}" target="_blank" rel="noopener">GitHub</a></li>
-    <li><a href="${c.whatsapp}" target="_blank" rel="noopener">WhatsApp</a></li>
-  `;
+  const nome = SITE_DATA.profile.nome;
+  footerEl.innerHTML = `
+    <div class="footer-top">
+      <a href="index.html" class="footer-brand">
+        <span class="brand-mark">CG</span>
+        <span>
+          <strong>${nome}</strong>
+          <small>${ui("footer.papel")} &middot; ${t(c.localizacao)}</small>
+        </span>
+      </a>
+      <ul class="footer-links">
+        <li><a href="mailto:${c.email}">${ui("contato.email")}</a></li>
+        <li><a href="${c.linkedin}" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="${c.github}" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="${c.whatsapp}" target="_blank" rel="noopener">WhatsApp</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; ${new Date().getFullYear()} ${nome}</span>
+      <a href="#" class="footer-top-link" data-topo>${ui("footer.topo")} <span aria-hidden="true">&uarr;</span></a>
+    </div>`;
+
+  footerEl.querySelector("[data-topo]").addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// Faixa "Vamos construir algo juntos?" antes do rodapé (menos na página de contato)
+function criaFaixaContato() {
+  const footer = document.querySelector(".site-footer");
+  if (!footer || document.body.dataset.page === "contato") return;
+
+  const faixa = document.createElement("section");
+  faixa.className = "cta-band";
+  faixa.innerHTML = `
+    <div class="container">
+      <div>
+        <span class="eyebrow" data-cta="eyebrow"></span>
+        <h2 class="cta-title" data-cta="titulo"></h2>
+        <p class="cta-text" data-cta="texto"></p>
+      </div>
+      <div class="cta-actions">
+        <a href="contato.html" class="btn btn-solid"><span data-cta="botao"></span> <span class="arrow">&rarr;</span></a>
+        <a href="${SITE_DATA.contato.whatsapp}" class="btn btn-ghost" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>`;
+  footer.before(faixa);
+}
+
+function renderFaixaContato() {
+  document.querySelectorAll("[data-cta]").forEach((el) => {
+    el.textContent = ui(`cta.${el.dataset.cta}`);
+  });
+}
+
+// Números rápidos na página inicial
+function renderStats() {
+  const el = document.getElementById("home-stats");
+  if (!el) return;
+
+  const tecnicas = SITE_DATA.objetivo.habilidades.filter((h) => / — /.test(t(h))).length;
+  const itens = [
+    [SITE_DATA.projetos.length, "home.stat.projetos"],
+    [SITE_DATA.experiencias.length, "home.stat.experiencias"],
+    [tecnicas, "home.stat.tecnologias"],
+  ];
+  el.innerHTML = itens
+    .map(([n, chave]) => `<div class="stat"><dt>${ui(chave)}</dt><dd>${pad(n)}</dd></div>`)
+    .join("");
+}
+
+// Os 3 projetos mais recentes na página inicial
+function renderDestaques() {
+  const el = document.getElementById("home-destaques");
+  if (!el) return;
+
+  const projetos = SITE_DATA.projetos || [];
+  el.innerHTML = projetos
+    .map((p, i) => ({ p, i }))
+    .slice(-3)
+    .reverse()
+    .map(({ p, i }) => cardProjetoHTML(p, i, `projetos.html#${slugProjeto(p)}`))
+    .join("");
+}
+
+// Sombra no cabeçalho depois de rolar a página
+function setupCabecalho() {
+  const header = document.querySelector(".site-header");
+  if (!header) return;
+  const atualiza = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
+  atualiza();
+  window.addEventListener("scroll", atualiza, { passive: true });
+}
+
+// Seções e cards aparecem suavemente ao rolar
+function setupRevelar() {
+  const reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduzir || !("IntersectionObserver" in window)) return;
+
+  const alvos = document.querySelectorAll(
+    "main section, .project-card, .timeline-item, .page-index li, .cta-band .container"
+  );
+  const obs = new IntersectionObserver(
+    (entradas) => {
+      entradas.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add("is-visible");
+        obs.unobserve(e.target);
+      });
+    },
+    { rootMargin: "0px 0px -8% 0px" }
+  );
+
+  alvos.forEach((el) => {
+    // O que já está na tela não anima
+    if (el.getBoundingClientRect().top < window.innerHeight) return;
+    el.classList.add("reveal");
+    obs.observe(el);
+  });
 }
 
 function renderSobre() {
@@ -225,26 +345,33 @@ function renderProjetos() {
     return;
   }
 
-  gridEl.innerHTML = projetos
-    .map((p, i) => {
-      const fotos = p.fotos.map(normalizaFoto);
-      const capa = p.capa || (fotos.find((f) => f.src) || {}).src;
-      const qtd = fotos.length;
-      const meta = [t(p.categoria), p.ano].filter(Boolean).join(" · ");
-      return `
-      <button type="button" class="project-card" data-index="${i}" aria-label="${ui("projetos.abrir")} ${t(p.titulo)}">
-        <div class="project-cover">
-          ${capa ? `<img src="${capa}" alt="" loading="lazy"${p.capaPosicao ? ` style="object-position: ${p.capaPosicao}"` : ""}>` : '<div class="placeholder">${ui("projetos.capa")}</div>'}
-          <span class="open-hint">${ui("projetos.verBook")} &middot; ${qtd} ${ui(qtd === 1 ? "projetos.foto" : "projetos.fotos")}</span>
-        </div>
-        <div class="project-info">
-          <span class="project-num">${pad(i + 1)}</span>
-          <h3 class="project-title">${t(p.titulo)}</h3>
-          <span class="project-meta">${meta}</span>
-        </div>
-      </button>`;
-    })
-    .join("");
+  gridEl.innerHTML = projetos.map((p, i) => cardProjetoHTML(p, i)).join("");
+}
+
+// Card de projeto: botão que abre o book, ou link (usado na página inicial)
+function cardProjetoHTML(p, i, href) {
+  const fotos = p.fotos.map(normalizaFoto);
+  const capa = p.capa || (fotos.find((f) => f.src) || {}).src;
+  const qtd = fotos.length;
+  const meta = [t(p.categoria), p.ano].filter(Boolean).join(" · ");
+  const stack = (p.stack || []).slice(0, 3);
+  const resto = (p.stack || []).length - stack.length;
+  const tag = href ? "a" : "button";
+  const attrs = href ? `href="${href}"` : `type="button" data-index="${i}"`;
+
+  return `
+    <${tag} ${attrs} class="project-card" aria-label="${ui("projetos.abrir")} ${t(p.titulo)}">
+      <div class="project-cover">
+        ${capa ? `<img src="${capa}" alt="" loading="lazy"${p.capaPosicao ? ` style="object-position: ${p.capaPosicao}"` : ""}>` : `<div class="placeholder">${ui("projetos.capa")}</div>`}
+        <span class="open-hint">${ui("projetos.verBook")} &middot; ${qtd} ${ui(qtd === 1 ? "projetos.foto" : "projetos.fotos")}</span>
+      </div>
+      <div class="project-info">
+        <span class="project-num">${pad(i + 1)}</span>
+        <h3 class="project-title">${t(p.titulo)}</h3>
+        <span class="project-meta">${meta}</span>
+        ${stack.length ? `<ul class="project-stack">${stack.map((s) => `<li>${s}</li>`).join("")}${resto > 0 ? `<li>+${resto}</li>` : ""}</ul>` : ""}
+      </div>
+    </${tag}>`;
 }
 
 // Liga os cliques e o book uma única vez (o grid é redesenhado ao trocar idioma)
