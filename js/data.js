@@ -12,25 +12,30 @@ const SITE_DATA = {
   profile: {
     nome: "Cauê Gontijo",
     cargo: {
-      pt: "Estudante de Análise e Desenvolvimento de Sistemas (ADS)",
-      en: "Systems Analysis and Development Student",
-      es: "Estudiante de Análisis y Desarrollo de Sistemas",
+      pt: "Desenvolvedor Full Stack Júnior · Estudante de ADS",
+      en: "Junior Full Stack Developer · Systems Analysis and Development Student",
+      es: "Desarrollador Full Stack Junior · Estudiante de Análisis y Desarrollo de Sistemas",
     },
     foto: "img/foto-perfil.jpg",
     sobre: {
       pt:
-        "Olá, me chamo Cauê, tenho 20 anos e estou no 4º período de Análise e Desenvolvimento " +
-        "de Sistemas na PUC Goiás. Atuo como desenvolvedor Full Stack com foco em automação, " +
-        "criando dashboards e sistemas internos que facilitam a rotina de quem trabalha comigo.",
+        "Olá, me chamo Cauê, tenho 20 anos e sou Desenvolvedor Full Stack Júnior e estudante do " +
+        "4º período de Análise e Desenvolvimento de Sistemas na PUC Goiás. Meu foco é back-end " +
+        "com Python, FastAPI e PostgreSQL, e no front trabalho com React. Desenvolvo sistemas web " +
+        "internos no INGOH e mantenho em produção um sistema de agendamento para um cliente, com " +
+        "mais de 170 testes automatizados. Tenho inglês avançado.",
       en:
-        "Hi, I'm Cauê, I'm 20 years old and in my 4th semester of Systems Analysis and " +
-        "Development at PUC Goiás. I work as a Full Stack developer focused on automation, " +
-        "building dashboards and internal systems that make my coworkers' daily routine easier.",
+        "Hi, I'm Cauê, I'm 20 years old, a Junior Full Stack Developer and a 4th-semester " +
+        "Systems Analysis and Development student at PUC Goiás. My focus is back-end with " +
+        "Python, FastAPI and PostgreSQL, and on the front end I work with React. I build " +
+        "internal web systems at INGOH and maintain a booking system in production for a " +
+        "client, backed by more than 170 automated tests. I speak advanced English.",
       es:
-        "Hola, me llamo Cauê, tengo 20 años y estoy en el 4º semestre de Análisis y Desarrollo " +
-        "de Sistemas en la PUC Goiás. Trabajo como desarrollador Full Stack enfocado en " +
-        "automatización, creando dashboards y sistemas internos que facilitan el día a día de " +
-        "quienes trabajan conmigo.",
+        "Hola, me llamo Cauê, tengo 20 años, soy Desarrollador Full Stack Junior y estudiante " +
+        "del 4º semestre de Análisis y Desarrollo de Sistemas en la PUC Goiás. Mi enfoque es el " +
+        "back-end con Python, FastAPI y PostgreSQL, y en el front trabajo con React. Desarrollo " +
+        "sistemas web internos en el INGOH y mantengo en producción un sistema de reservas para " +
+        "un cliente, con más de 170 pruebas automatizadas. Tengo inglés avanzado.",
     },
   },
 
@@ -91,22 +96,75 @@ const SITE_DATA = {
   /* atual: true marca a experiência com o selo "Atual" */
   experiencias: [
     {
-      cargo: { pt: "Estagiário de TI", en: "IT Intern", es: "Pasante de TI" },
+      cargo: {
+        pt: "Estagiário de Desenvolvimento Full Stack",
+        en: "Full Stack Development Intern",
+        es: "Pasante de Desarrollo Full Stack",
+      },
       empresa: {
-        pt: "Ingoh — Instituto Goiano de Oncologia e Hematologia (Goiânia/GO)",
-        en: "Ingoh — Goiás Institute of Oncology and Hematology (Goiânia, Brazil)",
-        es: "Ingoh — Instituto Goiano de Oncología y Hematología (Goiânia, Brasil)",
+        pt: "INGOH — Instituto Goiano de Oncologia e Hematologia (Goiânia/GO)",
+        en: "INGOH — Goiás Institute of Oncology and Hematology (Goiânia, Brazil)",
+        es: "INGOH — Instituto Goiano de Oncología y Hematología (Goiânia, Brasil)",
       },
-      periodo: {
-        pt: "01/06/2026 - Presente",
-        en: "Jun 2026 - Present",
-        es: "01/06/2026 - Presente",
-      },
+      periodo: { pt: "jun 2026 - Presente", en: "Jun 2026 - Present", es: "jun 2026 - Presente" },
       atual: true,
       descricao: {
-        pt: "Desenvolvedor Web, Full Stack, suporte.",
-        en: "Web development, Full Stack, IT support.",
-        es: "Desarrollo web, Full Stack, soporte técnico.",
+        pt:
+          "Desenvolvo sistemas web internos, do banco de dados à interface: o Estoque TI, que " +
+          "substituiu o controle manual do estoque da TI, e a Rastreabilidade do Expurgo, que " +
+          "acompanha o material esterilizável do recebimento até a volta ao setor. Cuido da " +
+          "segurança com perfis de acesso, HTTPS, proteção contra CSRF e roubo de sessão, " +
+          "bloqueio de tentativas de login e log de auditoria. Python, FastAPI, SQLAlchemy, " +
+          "PostgreSQL, React e Docker.",
+        en:
+          "I build internal web systems, from the database to the interface: Estoque TI, which " +
+          "replaced the IT department's manual inventory control, and the decontamination " +
+          "traceability system, which tracks sterilizable supplies from receipt back to the " +
+          "department. I handle security with access roles, HTTPS, CSRF and session hijacking " +
+          "protection, login throttling and audit logs. Python, FastAPI, SQLAlchemy, " +
+          "PostgreSQL, React and Docker.",
+        es:
+          "Desarrollo sistemas web internos, de la base de datos a la interfaz: Estoque TI, que " +
+          "reemplazó el control manual del inventario de TI, y la trazabilidad del área de " +
+          "descontaminación, que sigue el material esterilizable desde la recepción hasta su " +
+          "regreso al sector. Me ocupo de la seguridad con perfiles de acceso, HTTPS, protección " +
+          "contra CSRF y robo de sesión, bloqueo de intentos de inicio de sesión y registro de " +
+          "auditoría. Python, FastAPI, SQLAlchemy, PostgreSQL, React y Docker.",
+      },
+    },
+    {
+      cargo: {
+        pt: "Desenvolvedor Full Stack (Freelancer)",
+        en: "Full Stack Developer (Freelance)",
+        es: "Desarrollador Full Stack (Freelance)",
+      },
+      empresa: {
+        pt: "Valquíria Pontes Studio (Goiânia/GO · Remoto)",
+        en: "Valquíria Pontes Studio (Goiânia, Brazil · Remote)",
+        es: "Valquíria Pontes Studio (Goiânia, Brasil · Remoto)",
+      },
+      periodo: { pt: "nov 2026 - Presente", en: "Nov 2026 - Present", es: "nov 2026 - Presente" },
+      atual: true,
+      descricao: {
+        pt:
+          "Desenvolvi o site e o sistema de agendamento online do estúdio, em produção desde o " +
+          "lançamento, e continuo cuidando da manutenção. As clientes marcam sozinhas, sem criar " +
+          "conta, e dois horários nunca se sobrepõem. A proprietária tem um painel com agenda, " +
+          "serviços, conteúdo do site e relatório de vendas. Adequado à LGPD. Next.js, " +
+          "TypeScript, PostgreSQL (Supabase) e Prisma, com mais de 170 testes automatizados.",
+        en:
+          "I built the studio's website and online booking system, live since launch, and I " +
+          "keep maintaining it. Clients book on their own without an account, and two bookings " +
+          "never overlap. The owner has an admin panel with the schedule, services, site content " +
+          "and sales report. LGPD compliant. Next.js, TypeScript, PostgreSQL (Supabase) and " +
+          "Prisma, with more than 170 automated tests.",
+        es:
+          "Desarrollé el sitio y el sistema de reservas online del estudio, en producción desde " +
+          "el lanzamiento, y sigo a cargo del mantenimiento. Las clientas reservan solas, sin " +
+          "crear cuenta, y dos horarios nunca se superponen. La propietaria tiene un panel con " +
+          "agenda, servicios, contenido del sitio e informe de ventas. Adecuado a la LGPD. " +
+          "Next.js, TypeScript, PostgreSQL (Supabase) y Prisma, con más de 170 pruebas " +
+          "automatizadas.",
       },
     },
     {
@@ -116,41 +174,61 @@ const SITE_DATA = {
         en: "AGEHAB — Goiás Housing Agency (Goiânia, Brazil)",
         es: "AGEHAB — Agencia Goiana de Vivienda (Goiânia, Brasil)",
       },
-      periodo: {
-        pt: "09/02/2026 - 07/05/2026",
-        en: "Feb 2026 - May 2026",
-        es: "09/02/2026 - 07/05/2026",
+      periodo: { pt: "fev 2026 - mai 2026", en: "Feb 2026 - May 2026", es: "feb 2026 - may 2026" },
+      descricao: {
+        pt:
+          "Suporte técnico aos usuários da agência, presencial e remoto: chamados de hardware, " +
+          "software e acesso, instalação e manutenção de computadores, impressoras e periféricos, " +
+          "e apoio em problemas de rede.",
+        en:
+          "On-site and remote technical support for the agency's users: hardware, software and " +
+          "access tickets, setting up and maintaining computers, printers and peripherals, and " +
+          "help with network issues.",
+        es:
+          "Soporte técnico presencial y remoto a los usuarios de la agencia: incidencias de " +
+          "hardware, software y acceso, instalación y mantenimiento de computadoras, impresoras y " +
+          "periféricos, y apoyo en problemas de red.",
       },
-      descricao: { pt: "Suporte técnico.", en: "Technical support.", es: "Soporte técnico." },
     },
   ],
 
   objetivo: {
     texto: {
       pt:
-        "Busco uma vaga como Desenvolvedor Júnior para aplicar o que já faço no dia a dia: " +
-        "interfaces com React, back-end em Java, Python e Node.js, bancos relacionais e " +
-        "ferramentas como Git, Docker e Kafka, agregando valor técnico e prático à equipe.",
+        "Busco uma vaga de estágio ou de nível júnior em desenvolvimento ou análise de dados, " +
+        "para aplicar o que já faço no dia a dia: back-end com Python, FastAPI e PostgreSQL, " +
+        "interfaces com React e Next.js, testes automatizados e Docker, agregando valor técnico " +
+        "e prático à equipe.",
       en:
-        "I'm looking for a Junior Developer position where I can apply what I already do every " +
-        "day: React interfaces, back-end with Java, Python and Node.js, relational databases and " +
-        "tools like Git, Docker and Kafka, adding technical and practical value to the team.",
+        "I'm looking for an internship or junior position in software development or data " +
+        "analysis, where I can apply what I already do every day: back-end with Python, FastAPI " +
+        "and PostgreSQL, interfaces with React and Next.js, automated testing and Docker, " +
+        "adding technical and practical value to the team.",
       es:
-        "Busco un puesto como Desarrollador Junior para aplicar lo que ya hago en el día a día: " +
-        "interfaces con React, back-end en Java, Python y Node.js, bases de datos relacionales y " +
-        "herramientas como Git, Docker y Kafka, aportando valor técnico y práctico al equipo.",
+        "Busco una pasantía o un puesto junior en desarrollo o análisis de datos, para aplicar " +
+        "lo que ya hago en el día a día: back-end con Python, FastAPI y PostgreSQL, interfaces " +
+        "con React y Next.js, pruebas automatizadas y Docker, aportando valor técnico y práctico " +
+        "al equipo.",
     },
     /* "Nome — Nível" vira habilidade técnica; sem " — " vira competência pessoal */
     habilidades: [
       { pt: "Python — Avançado", en: "Python — Advanced", es: "Python — Avanzado" },
+      { pt: "FastAPI e SQLAlchemy — Uso profissional", en: "FastAPI and SQLAlchemy — Professional use", es: "FastAPI y SQLAlchemy — Uso profesional" },
       { pt: "Java — Avançado", en: "Java — Advanced", es: "Java — Avanzado" },
+      { pt: "Node.js — Uso em projetos", en: "Node.js — Project use", es: "Node.js — Uso en proyectos" },
       { pt: "JavaScript — Avançado", en: "JavaScript — Advanced", es: "JavaScript — Avanzado" },
+      { pt: "TypeScript — Em produção", en: "TypeScript — In production", es: "TypeScript — En producción" },
       { pt: "HTML, CSS e React — Avançado", en: "HTML, CSS and React — Advanced", es: "HTML, CSS y React — Avanzado" },
-      { pt: "Full Stack — Avançado", en: "Full Stack — Advanced", es: "Full Stack — Avanzado" },
-      { pt: "Kotlin (Android) — Conhecimento sólido", en: "Kotlin (Android) — Solid knowledge", es: "Kotlin (Android) — Conocimiento sólido" },
-      { pt: "MySQL — Avançado", en: "MySQL — Advanced", es: "MySQL — Avanzado" },
+      { pt: "Next.js — Em produção", en: "Next.js — In production", es: "Next.js — En producción" },
       { pt: "PostgreSQL — Avançado", en: "PostgreSQL — Advanced", es: "PostgreSQL — Avanzado" },
+      { pt: "MySQL — Avançado", en: "MySQL — Advanced", es: "MySQL — Avanzado" },
       { pt: "Oracle — Intermediário", en: "Oracle — Intermediate", es: "Oracle — Intermedio" },
+      { pt: "Prisma — Em produção", en: "Prisma — In production", es: "Prisma — En producción" },
+      { pt: "Kotlin (Android) — Conhecimento sólido", en: "Kotlin (Android) — Solid knowledge", es: "Kotlin (Android) — Conocimiento sólido" },
+      { pt: "Docker — Uso profissional", en: "Docker — Professional use", es: "Docker — Uso profesional" },
+      { pt: "Git e GitHub — Uso diário", en: "Git and GitHub — Daily use", es: "Git y GitHub — Uso diario" },
+      { pt: "Testes automatizados — Em produção", en: "Automated testing — In production", es: "Pruebas automatizadas — En producción" },
+      { pt: "Inglês — Avançado", en: "English — Advanced", es: "Inglés — Avanzado" },
       { pt: "Pacote Office — Avançado", en: "Microsoft Office — Advanced", es: "Paquete Office — Avanzado" },
       { pt: "Hardware — Avançado", en: "Hardware — Advanced", es: "Hardware — Avanzado" },
       { pt: "Empatia", en: "Empathy", es: "Empatía" },
@@ -379,8 +457,8 @@ const SITE_DATA = {
     telefone: "+55 (62) 9 9692-9240",
     localizacao: { pt: "Goiânia/GO", en: "Goiânia, Brazil", es: "Goiânia, Brasil" },
     whatsapp: "https://wa.me/5562996929240",
-    linkedin: "https://www.linkedin.com/in/cau%C3%AA-gontijo-b39938355",
-    linkedinLabel: "linkedin.com/in/cauê-gontijo",
+    linkedin: "https://www.linkedin.com/in/cauegontijo",
+    linkedinLabel: "linkedin.com/in/cauegontijo",
     github: "https://github.com/cauegontijo-cpu",
   },
 };
